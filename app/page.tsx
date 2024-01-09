@@ -1,9 +1,25 @@
+import { LoginButton } from "@/components/auth/login-button"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { Poppins } from "next/font/google"
 
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["600"]
+})
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <p className='font-semibold font-serif'> Hello Auth</p>
+    <main className="h-full flex flex-col items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-400 to-sky-800">
+      <div className="space-y-6 text-center">
+        <h1 className={cn("text-6xl font-bold text-white drop-shadow-md", poppins.className)}>🔒Auth</h1>
+        <p className="text-white text-lg">A Simple Authentication Service</p>
+        <div>
+          <LoginButton>
+            <Button size="lg" variant="secondary">Sign In</Button>
+          </LoginButton>
+        </div>
+      </div>
     </main>
   )
 }
