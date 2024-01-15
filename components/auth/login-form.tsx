@@ -5,9 +5,12 @@ import { useForm } from "react-hook-form";
 import { LoginSchema } from '@/schemas';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { FormError } from '@/components/form-error';
+import { FormSucess } from '@/components/form-success';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CardWrapper } from "@/components/auth/card-wrapper";
 import { Form, FormControl, FormMessage, FormField, FormItem, FormLabel } from "@/components/ui/form"; 
+import { login } from '@/actions/login';
 
 export const LoginForm = () => {
     const form = useForm<z.infer<typeof LoginSchema>>({
@@ -19,7 +22,7 @@ export const LoginForm = () => {
     });
 
     const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-        console.log(values)
+        login(values);
     }
 
     return (
@@ -55,6 +58,8 @@ export const LoginForm = () => {
                             </FormItem>
                         )} />
                     </div>
+                    {/* <FormSucess message='Successfully Updated.' />
+                    <FormError message='Something is missing' /> */}
                     <Button className='w-full' type='submit'>
                         Login 
                     </Button>
